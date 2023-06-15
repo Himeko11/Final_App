@@ -25,11 +25,10 @@ const CardsProvider = ({children}) =>{
       setModalOpen(false);
     };
 
-  
     const getCard = async () => {
       const url = `https://deckofcardsapi.com/api/deck/${IdPlayerCards}/draw/?count=1`;
       const { data } = await axios.get(url);
-      setDeckPlayerAux(data.cards);
+      setDeckPlayerOne(data.cards);
   
       console.log(deckPlayerOne);
       
@@ -75,6 +74,11 @@ const CardsProvider = ({children}) =>{
       const url = `https://deckofcardsapi.com/api/deck/${IdPlayerCards}/draw/?count=1`;
       const { data } = await axios.get(url);
       setDeckPlayerOne(data.cards);
+      if (deckPlayerAux.length === 0) {
+        setDeckPlayerAux(deckPlayerOne)
+      }else{
+        console.log(deckPlayerAux)
+      }
     };
 
 
